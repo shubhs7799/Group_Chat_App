@@ -53,3 +53,19 @@ h2 {
 .btn:hover {
   background: #357ab8;
 }
+
+.signup-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-link {
+  color: #4a90e2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}

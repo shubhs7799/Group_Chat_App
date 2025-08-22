@@ -10,19 +10,19 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const resp = await axios.post('/api/auth/login', credentials);
 
     if (resp.status === 200) {
-      alert(resp.data.message);
+      alert(resp.data.message || "Login successful");
 
-      // save token in localStorage (for chat later)
+      // Save token in localStorage for chat session
       localStorage.setItem('token', resp.data.token);
 
-      // redirect to chat page
+      // Redirect to chat page
       window.location.href = '/chat.html';
     }
   } catch (err) {
     if (err.response) {
       alert(err.response.data.message || 'Login failed');
     } else {
-      alert('Network error, check server');
+      alert('Network error, please check backend server');
     }
   }
 });
