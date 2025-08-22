@@ -1,18 +1,27 @@
-document.getElementById("signupForm").addEventListener("submit", async function (e) {
+document.getElementById('signupForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const userData = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    password: document.getElementById("password").value,
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    password: document.getElementById('password').value
   };
 
-  console.log("User Data:", userData);
+  try {
+    const resp = await axios.post('/api/auth/signup', userData);
 
-  // Later we’ll send this to backend API with fetch()
-  // Example:
-  // await fetch("/api/auth/signup", { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(userData) });
-  
-  alert("Signup successful (frontend only for now)");
+    if (resp.status === 201) {
+      alert(resp.data.message || 'Account created successfully');
+      window.location.href = '/login.html'; // redirect to login page
+    }
+  } catch (err) {
+    if (err.response) {
+      // Server responded with an error status
+      alert(err.response.data.message || 'Error during signup');
+    } else {
+      // Network or other error
+      alert('Network error, please check backend');
+    }
+  }
 });
