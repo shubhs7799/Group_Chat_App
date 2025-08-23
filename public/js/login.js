@@ -7,16 +7,12 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   };
 
   try {
-    const resp = await axios.post('/api/auth/login', credentials);
+    const resp = await axios.post('/api/v1/login', credentials);
 
     if (resp.status === 200) {
       alert(resp.data.message || "Login successful");
-
-      // Save token in localStorage for chat session
       localStorage.setItem('token', resp.data.token);
-
-      // Redirect to chat page
-      window.location.href = '/chat.html';
+      window.location.href = '/chat.html'; // redirect to chat page
     }
   } catch (err) {
     if (err.response) {

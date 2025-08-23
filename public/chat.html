@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Chat</title>
+  <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+  <div class="chat-container">
+    
+    <!-- Header with logout -->
+    <div class="chat-header">
+      <h3>Group Chat</h3>
+      <button id="logoutBtn">Logout</button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="messages" class="messages"></div>
+
+    <!-- Input area -->
+    <div class="input-container">
+      <input type="text" id="messageInput" placeholder="Type a message..." />
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

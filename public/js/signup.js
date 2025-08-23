@@ -11,9 +11,10 @@ document.getElementById('signupForm').addEventListener('submit', async function 
   try {
     const resp = await axios.post('/api/auth/signup', userData);
 
-    if (resp.status === 201) {
-      alert(resp.data.message || 'Account created successfully');
-      window.location.href = '/login.html'; // redirect to login page
+    if (resp.status === 200) {
+      alert(resp.data.message || "Login successful");
+      localStorage.setItem('token', resp.data.token);
+      window.location.href = '/chat.html'; // redirect to chat page
     }
   } catch (err) {
     if (err.response) {
