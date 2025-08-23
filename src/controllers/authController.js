@@ -10,7 +10,6 @@ const generateToken = (payload) => {
 
 const signup = async (req, res) => {
   try {
-    console.log("Signup request body:", req.body); // Add this line
     const { name, emailId, phoneNumber, password } = req.body;
     const passwordHash = await bcrypt.hash(password, 10);
     const user = await new User({
